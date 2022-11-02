@@ -18,7 +18,7 @@ module decode (input [6:0] in, output reg [12:0] out);
 				out = 13'b0001001000010;
 			7'b0011??1: //CMPM
 				out = 13'b1001001100000;
-		  7'b0100??1: //LIT
+		  	7'b0100??1: //LIT
 				out = 13'b0011010000010;
 			7'b0101??1: //IN
 				out = 13'b0011010000100;
@@ -42,7 +42,7 @@ module decode (input [6:0] in, output reg [12:0] out);
 				out = 13'b0100000001000;
 			7'b1101??1: //OUT
 				out = 13'b0000000001001;
-		  7'b1110??1: //NANDI
+		  	7'b1110??1: //NANDI
 				out = 13'b0011100000010;
 			7'b1111??1: //NANDM
 				out = 13'b1011100100000;
