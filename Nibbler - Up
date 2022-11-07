@@ -1,0 +1,12 @@
+//3
+module uP (input clk, reset, input [3:0] DIP, output [3:0] LED);
+
+	wire wireincPC, wireloadPC, wireloadFlags, wireCarry. wireZero, wireCarryFlag, wireZeroFlag
+	wire [7:0] wireprogram_byte;
+	wire [11:0] wirePC, wireadressRam;
+
+	programCounter U1 (.incPC(wireincPC), .loadPC(wireloadPC), .reset(reset), .clk(clk),	.adressRam (wireadressRam), .PC(wirePC));
+  ROM U2 (.PC(wirePC), .ROMoutput(wireprogram_byte));
+	FF_2bits flags (.clk(clk), .reset(reset), .EN(wireloadFlags), .A({wireCarry, wireZero}), .Q({wireCarryFlag, wireZeroFlag});
+	fetch U3 (.clk(clk), .reset(reset));
+	phase U4 (.clk(clk), .reset(reset));
