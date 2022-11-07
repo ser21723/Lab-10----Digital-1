@@ -1,0 +1,32 @@
+// look in pins.pcf for all the pin names on the TinyFPGA BX board
+// apply pull-ups to pins on pins.pcf -pullup yes
+
+module top_tb();
+
+  reg clk,reset;
+  reg [3:0] DIP;
+  wire [3:0] LED;
+
+  uP microP (.clk(clk), .reset(reset), .DIP(reset), .LED(LED));
+
+  initial begin
+    $dumpfile("top_tb.vcd");
+    $dumpvars(0,top_tb);
+  end
+
+  always
+        #5 clk = ~clk;
+
+  initial begin
+    clk = 0; reset = 0;
+
+    #2
+    reset = 1;
+    #2
+    reset = 0;
+
+    $finish();
+
+  end
+
+endmodule
